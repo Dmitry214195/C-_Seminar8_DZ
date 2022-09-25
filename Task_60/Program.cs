@@ -28,7 +28,6 @@ for (int i = 0; i < resultNums.GetLength(0); i++)
     Console.WriteLine();
 }
 
-
 int[,,] Create3DMassive(int size1, int size2, int size3)
 {
     int[,,] array = new int[size1, size2, size3];
@@ -61,7 +60,6 @@ int[,,] Create3DMassive(int size1, int size2, int size3)
     }
     return array;
 }
-
 
 int InputInt(string output)
 {
