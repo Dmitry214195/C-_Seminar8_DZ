@@ -1,28 +1,44 @@
 ﻿// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 
-Console.WriteLine("Введите размер квадратного массива: ");
-int massVol = Convert.ToInt32(Console.ReadLine());
-int[,] numbers = new int[massVol, massVol];
-FillArrayRandomNumbers(numbers);
-PrintArray(numbers);
-int minSum = Int32.MaxValue;
-int indexLine = 0;
+Console.WriteLine($"\nВведите размер массива m x n: ");
+int m = InputNumbers("Введите m: ");
+int n = InputNumbers("Введите n: ");
+Console.WriteLine("Массив: ");
 
-for (int i = 0; i < numbers.GetLength(0); i++)
+int[,] array = new int[m, n];
+FillArrayRandomNumbers(array);
+WriteArray(array);
+
+int minSumLine = 0;
+int sumLine = SumLineElements(array, 0);
+for (int i = 1; i < array.GetLength(0); i++)
 {
-    int sum = 0;
-    for (int j = 0; j < numbers.GetLength(1); j++)
-    {
-        sum = sum + numbers[i, j];
-    }
-    if (sum < minSum)
-    {
-        minSum = sum;
-        indexLine++;
+    int tempSumLine = SumLineElements(array, i);
+    if (sumLine > tempSumLine)
+    {   
+        sumLine = tempSumLine;
+        minSumLine = i;
     }
 }
 
-Console.WriteLine((indexLine) + " строка с наименьшей суммой елементов" + ", сумма елементов равна: " + (minSum));
+Console.WriteLine((minSumLine + 1) + " - строкa с наименьшей суммой элементов, сумма элементов равна "  + (sumLine) + ".");
+
+int SumLineElements(int[,] array, int i)
+{
+    int sumLine = array[i, 0];
+    for (int j = 1; j < array.GetLength(1); j++)
+    {
+        sumLine += array[i, j];
+    }
+    return sumLine;
+}
+
+int InputNumbers(string input)
+{
+    Console.Write(input);
+    int output = Convert.ToInt32(Console.ReadLine());
+    return output;
+}
 
 void FillArrayRandomNumbers(int[,] array)
 {
@@ -35,16 +51,14 @@ void FillArrayRandomNumbers(int[,] array)
     }
 }
 
-void PrintArray(int[,] array)
+void WriteArray(int[,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
-        Console.Write("[ ");
         for (int j = 0; j < array.GetLength(1); j++)
         {
             Console.Write(array[i, j] + " ");
         }
-        Console.Write("]");
-        Console.WriteLine("");
+        Console.WriteLine();
     }
 }
