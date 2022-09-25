@@ -1,24 +1,24 @@
 ﻿// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
 Console.WriteLine("Введите размеры матриц.");
-int m = InputNumbers("Введите число строк 1-й матрицы: ");
+int m = InputNumbers("\vВведите число строк 1-й матрицы: ");
 int n = InputNumbers("Введите число столбцов 1-й матрицы (и строк 2-й): ");
 int p = InputNumbers("Введите число столбцов 2-й матрицы: ");
 
 int[,] firstMartrix = new int[m, n];
 CreateArray(firstMartrix);
-Console.WriteLine("Первая матрица:");
+Console.WriteLine("\vПервая матрица:");
 WriteArray(firstMartrix);
 
 int[,] secomdMartrix = new int[n, p];
 CreateArray(secomdMartrix);
-Console.WriteLine("Вторая матрица:");
+Console.WriteLine("\vВторая матрица:");
 WriteArray(secomdMartrix);
 
 int[,] resultMatrix = new int[m, p];
 
 MultiplyMatrix(firstMartrix, secomdMartrix, resultMatrix);
-Console.WriteLine("Произведение первой и второй матриц:");
+Console.WriteLine("\vПроизведение первой и второй матриц:");
 WriteArray(resultMatrix);
 
 void MultiplyMatrix(int[,] firstMartrix, int[,] secomdMartrix, int[,] resultMatrix)
